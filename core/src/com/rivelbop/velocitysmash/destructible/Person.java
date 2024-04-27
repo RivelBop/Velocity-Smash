@@ -5,11 +5,13 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.World;
 import com.rivelbop.velocitysmash.Player;
 
+import static com.rivelbop.velocitysmash.VelocitySmash.assets;
+
 public class Person extends Destructible {
     public int direction;
 
     public Person(World world) {
-        super(new Texture("badlogic.jpg"), "explosion.p",
+        super(assets.get("badlogic.jpg", Texture.class), "explosion.p",
                 world, 0.2f, 0.5f, 1f,
                 1f);
         direction = MathUtils.random(0, 3);
@@ -22,6 +24,6 @@ public class Person extends Destructible {
         if (!isHit) {
             body.getBody().setLinearVelocity(0.5f * xAngle, 0.5f * yAngle);
         }
-        super.update(player, 0.3f);
+        super.update(player);
     }
 }

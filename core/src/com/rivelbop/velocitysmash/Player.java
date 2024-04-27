@@ -21,10 +21,8 @@ public class Player {
     public float velocity, acceleration, deceleration, rotationSpeed, maxSpeed, driveParticleTimer;
     public boolean isMoving;
 
-
     public Player(World world) {
         sprite = new Sprite(new Texture("car.png"));
-
 
         body = new DynamicBody(world,
                 new PolygonShape() {{
@@ -35,8 +33,8 @@ public class Player {
 
         acceleration = 150f / PPM;
         deceleration = 150f / PPM;
-        rotationSpeed = 100f;
         maxSpeed = 400f / PPM;
+        rotationSpeed = 150f;
     }
 
     public void render(SpriteBatch batch) {
@@ -87,9 +85,6 @@ public class Player {
         sprite.setPosition(position.x * PPM - sprite.getWidth() / 2f, position.y * PPM - sprite.getHeight() / 2f);
         sprite.setOriginCenter();
         sprite.setRotation((float) Math.toDegrees(physicsBody.getAngle()));
-        
-        maxSpeed = 400f / PPM;
-        rotationSpeed = 150f;
     }
 
     private void createDriveParticle() {
@@ -112,5 +107,4 @@ public class Player {
             driveParticleTimer = 0f;
         }
     }
-
 }

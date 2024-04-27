@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -23,8 +22,6 @@ import com.rivelbop.velocitysmash.networking.Network;
 
 import static com.rivelbop.velocitysmash.VelocitySmash.PPM;
 import static com.rivelbop.velocitysmash.VelocitySmash.camera;
-
-import java.awt.DisplayMode;
 
 public class MainGame extends Scene {
 	private float packetTimer;
@@ -91,9 +88,9 @@ public class MainGame extends Scene {
         }
         
         for(Crate c : crates) {
-        	c.update(player, 0.3f);
+        	c.update(player);
         }
-        world.step(delta, 6, 6);
+        world.step(delta, 8, 3);
         
         packetTimer += Gdx.graphics.getDeltaTime();
         if(packetTimer >= Network.PACKET_UPDATE_INTERVAL) {

@@ -2,6 +2,7 @@ package com.rivelbop.velocitysmash.scene;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.rivelbop.rivelworks.screen.Scene;
 
 import static com.rivelbop.velocitysmash.VelocitySmash.assets;
@@ -17,7 +18,7 @@ public class LoadingGame extends Scene {
         assets.load("badlogic.jpg", Texture.class);
         assets.load("car.png", Texture.class);
         assets.load("crate.png", Texture.class);
-       
+        assets.load("crateBreak.p", ParticleEffect.class);
     }
 
     @Override

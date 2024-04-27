@@ -62,13 +62,6 @@ public class GameClient implements Listener {
             // Updates the bodies of the players to their network positions
             Body body = p.body.getBody();
             Vector2 position = body.getTransform().getPosition();
-            /*body.setTransform(
-                    p.playerServer.x - position.x,
-                    p.playerServer.y,
-                    p.playerServer.rotation
-            );
-            Vector2 position = body.getTransform().getPosition();
-            */
             body.setTransform(
                     position.x + (p.playerServer.x - position.x) / 10f,
                     position.y + (p.playerServer.y - position.y) / 10f,
