@@ -15,8 +15,8 @@ public class PlayerClient {
     public Sprite sprite;
     public StaticBody body;
 
-    public PlayerClient(World world, float x, float y, float rotation) {
-        sprite = new Sprite(assets.get("car.png", Texture.class));
+    public PlayerClient(World world, float x, float y, float rotation, int health) {
+        sprite = new Sprite(assets.get("carBomb.png", Texture.class));
 
         body = new StaticBody(world, new PolygonShape() {{
             setAsBox(
@@ -24,7 +24,7 @@ public class PlayerClient {
                     sprite.getHeight() / 2f / PPM
             );
         }});
-
+        body.getBody().setUserData(sprite);
         body.getBody().getTransform().setPosition(new Vector2(x, y));
         body.getBody().getTransform().setRotation(rotation);
 
@@ -32,5 +32,6 @@ public class PlayerClient {
         playerServer.x = x;
         playerServer.y = y;
         playerServer.rotation = rotation;
+        playerServer.health = health;
     }
 }

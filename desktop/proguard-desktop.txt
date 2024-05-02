@@ -1,0 +1,64 @@
+-verbose
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-keepattributes Signature,InnerClasses,SourceFile,LineNumberTable
+
+-dontwarn com.badlogic.**
+-dontwarn org.lwjgl.**
+-dontwarn org.objectweb.**
+-dontwarn com.esotericsoftware.**
+
+#-keep class com.badlogic.**
+-keep class org.lwjgl.**
+-keep class org.objectweb.**
+-keep class com.esotericsoftware.**
+
+#-keepclassmembers class com.badlogic.** { *; }
+-keepclassmembers class org.lwjgl.** { *; }
+-keepclassmembers class org.objectweb.** { *; }
+-keepclassmembers class com.esotericsoftware.** { *; }
+
+#
+-keep class com.badlogic.gdx.audio.**
+-keep class com.badlogic.gdx.backends.**
+-keep class com.badlogic.gdx.scenes.**
+-keep class com.badlogic.gdx.graphics.*
+-keep class com.badlogic.gdx.graphics.g2d.BitmapFont
+-keep class com.badlogic.gdx.graphics.Color
+
+-keepclassmembers class com.badlogic.gdx.backends.** { *; }
+-keepclassmembers class com.badlogic.gdx.audio.** { *; }
+-keepclassmembers class com.badlogic.gdx.scenes.** { *; }
+-keepclassmembers class com.badlogic.gdx.graphics.* { *; }
+-keepclassmembers class com.badlogic.gdx.graphics.g2d.BitmapFont { *; }
+-keepclassmembers class com.badlogic.gdx.graphics.Color { *; }
+
+-keepclassmembers class com.badlogic.gdx.physics.box2d.World {
+   boolean contactFilter(long, long);
+   void    beginContact(long);
+   void    endContact(long);
+   void    preSolve(long, long);
+   void    postSolve(long, long);
+   boolean reportFixture(long);
+   float   reportRayFixture(long, float, float, float, float, float);
+}
+#
+
+# Keeps only necessary Kryonet packages
+#-keep class com.esotericsoftware.kryo.serializers.**
+#-keep class com.esotericsoftware.reflectasm.**
+#-keepclassmembers class com.esotericsoftware.kryo.serializers.** { *; }
+#-keepclassmembers class com.esotericsoftware.reflectasm.** { *; }
+
+-keepclasseswithmembernames class * {
+  native <methods>;
+}
+
+-keep public class com.rivelbop.velocitysmash.DesktopLauncher {
+    public static void main(java.lang.String[]);
+}
+
+-keepclassmembers,allowoptimization enum * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}

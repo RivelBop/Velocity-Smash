@@ -2,7 +2,6 @@ package com.rivelbop.velocitysmash;
 
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
-
 import static com.rivelbop.velocitysmash.VelocitySmash.HEIGHT;
 import static com.rivelbop.velocitysmash.VelocitySmash.WIDTH;
 

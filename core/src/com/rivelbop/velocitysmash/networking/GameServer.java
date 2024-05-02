@@ -34,11 +34,13 @@ public class GameServer implements Listener {
         // Create a new player up here
         PlayerServer player = new PlayerServer();
         player.rotation = 90f;
+        player.health = 3;
 
         // Notify all other players in the server that a new player has joined
         AddPlayerPacket packet = new AddPlayerPacket();
         packet.id = c.getID();
         packet.rotation = player.rotation;
+        packet.health = player.health;
         server.sendToAllExceptTCP(c.getID(), packet);
 
         // Send all currently joined players to the new connected player
@@ -48,6 +50,7 @@ public class GameServer implements Listener {
             packet.x = players.get(id).x;
             packet.y = players.get(id).y;
             packet.rotation = players.get(id).rotation;
+            packet.health = players.get(id).health;
             c.sendTCP(packet);
         }
 
@@ -63,6 +66,7 @@ public class GameServer implements Listener {
             players.get(c.getID()).x = packet.x;
             players.get(c.getID()).y = packet.y;
             players.get(c.getID()).rotation = packet.rotation;
+            players.get(c.getID()).health = packet.health;
 
             packet.id = c.getID();
             server.sendToAllExceptUDP(c.getID(), packet);
@@ -84,7 +88,6 @@ public class GameServer implements Listener {
 
     public void close() {
         server.stop();
-        server.close();
         try {
             server.dispose();
         } catch (IOException e) {

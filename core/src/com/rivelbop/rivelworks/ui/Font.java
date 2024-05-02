@@ -102,7 +102,7 @@ public class Font implements Disposable {
      */
     public void drawCenter(SpriteBatch batch, String text, float x, float y) {
         GlyphLayout layout = new GlyphLayout(bitmapFont, text);
-        bitmapFont.draw(batch, text, x - layout.width / 2f, y - layout.height / 2f);
+        bitmapFont.draw(batch, text, x - layout.width / 2f, y + layout.height / 2f);
     }
 
     /**

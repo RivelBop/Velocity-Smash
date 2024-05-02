@@ -43,6 +43,19 @@ tasks.register('dist', Jar) {
     with jar
 }
 
+task obfuscate(dependsOn: dist, type: proguard.gradle.ProGuardTask) {
+    // Files
+    def inputFile = dist.outputs.files.singleFile.path
+    def outputJar = dist.destinationDirectory.file("velocitysmash.jar")
+    def outputJarFilePath = outputJar.get().asFile.path
+
+    // Task configuration
+    configuration files("proguard-desktop.txt")
+    libraryjars("/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/rt.jar")
+    libraryjars("/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/jce.jar")
+    injars  files(inputFile)
+    outjars files(outputJarFilePath)
+}
 
 dist.dependsOn classes
 
